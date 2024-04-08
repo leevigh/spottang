@@ -1,95 +1,70 @@
 import Image from "next/image";
+import { 
+  Box, Button, 
+  Flex, Heading, 
+  Input, InputGroup, 
+  InputLeftElement, 
+  Stack, Text } from '@chakra-ui/react'
+import { useMediaQuery } from "@chakra-ui/react";
 import styles from "./page.module.css";
+import Navigation from "@/components/Navigation";
+import SearchIcon from "@/components/icons/SearchIcon";
 
 export default function Home() {
+
+  // const isMobileScreen = useMediaQuery('(max-width: 800px)', {
+  //   ssr: true,
+  //   fallback: false,
+  // })
+
   return (
     <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
+      <Navigation />
+
+      <div style={{ maxHeight: '1024px' }}>
+        <Flex style={{ 
+          maxWidth: '1240px', 
+          margin: '0 auto'
+        }} alignItems={'center'} justify={'space-between'}>
+          <Box style={{ maxWidth: '507px' }}>
+            <Box mb={'12px'}>
+              <Box>
+                <Heading as='h1' fontSize='64px'>
+                  Find a place you will love to live!
+                </Heading>
+              </Box>
+
+              <Box>
+                <Text>
+                See through the lenses of people who have lived or visited the neighbourhood you might have in mind.
+                </Text>
+              </Box>
+            </Box>
+
+            <Box>
+              <Stack spacing={4}>
+                <InputGroup mb={'10px'}>
+                  <InputLeftElement pointerEvents='none'>
+                    <SearchIcon />
+                  </InputLeftElement>
+                  <Input type='text' placeholder='Enter Address' px={'2rem'} />
+                </InputGroup>
+
+              </Stack>
+                <Button backgroundColor={'#5378F6'} color={"#FBFAFC"} size='md'>
+                  SEARCH
+                </Button>
+            </Box>
+          </Box>
+          <Box display={{ base: 'none', md: 'none', lg: 'block' }} style={{ 
+            position: 'relative', 
+            width: '506px', 
+            height: '1000px'}}>
+            <Image src="/hero.png" alt="hero" fill={true} objectFit="cover" />
+          </Box>
+        </Flex>
       </div>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
     </main>
   );
 }
